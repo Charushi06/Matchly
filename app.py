@@ -1,11 +1,8 @@
 import streamlit as st
 import pandas as pd
 import os
-import tempfile
-import sys
 
-# Ensure src is in path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+import tempfile
 
 from src.orchestrator import ScreeningOrchestrator
 
@@ -81,12 +78,20 @@ if st.button(" Launch Screening Mission"):
                     df = pd.DataFrame(results)
                     # Formatting for display
                     display_df = df[['score', 'filename', 'raw_text_preview']].copy()
-                    display_df['score'] = display_df['score'].apply(lambda x: f"{x:.4f}")
-                    
+
                     st.dataframe(
-                        display_df.style.background_gradient(subset=['score'], cmap="Greens"),
+                        display_df,
+                        column_config={
+                            "score": st.column_config.ProgressColumn(
+                                "Match Score",
+                                min_value=0.0,
+                                max_value=1.0,
+                                format="%.4f",
+                            )
+                        },
                         use_container_width=True
                     )
+
                     
                     st.subheader("Detailed Breakdown")
                     for i, row in df.head(5).iterrows():

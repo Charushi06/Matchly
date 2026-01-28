@@ -1,9 +1,5 @@
-import sys
 import os
 import argparse
-
-# Ensure src is in path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from src.orchestrator import ScreeningOrchestrator
 
