@@ -26,8 +26,11 @@ Launch the visual interface to upload new resumes:
 streamlit run app.py
 ```
 
-## Features (Phase 1 MVP)
+## Features
 - **Multi-Format Parsing**: Supports PDF and text extraction.
 - **NLP Engine**: automated tokenization and extensive cleaning.
 - **Scoring Logic**: TF-IDF Vectorization & Cosine Similarity ranking.
 - **Workflow Orchestration**: State-managed processing pipeline.
+
+## Deployed Link
+https://matchly-cg.streamlit.app/
